@@ -9,21 +9,25 @@ const authRoutes = require('./routes/authRoutes');
 const budgetRoutes = require('./routes/budgetRoutes');
 
 const app=express();
+const normalizeOrigin = (url) => (url ? url.replace(/\/$/, '') : url);
+
 const allowedOrigins = [
   process.env.LOCAL_FRONTEND_URL,
-  process.env.PRODUCTION_FRONTEND_URL
-];
+  process.env.PRODUCTION_FRONTEND_URL,
+  process.env.PRODUCTION_API_FRONTEND_URL,
+].map(normalizeOrigin);
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      const normalizedOrigin = normalizeOrigin(origin);
+      if (!origin || allowedOrigins.includes(normalizedOrigin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error('Not allowed by CORS'));
       }
     },
-    credentials: true
+    credentials: true,
   })
 );
 app.use(express.json());
