@@ -29,7 +29,7 @@ const KPISummary = ({ expenses }) => {
             </div>
           </div>
           <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-200 to-slate-500 mt-2">
-            {item.title === "Total Expenses" || item.title === "Avg per Expense" ? `$${item.value}` : item.value}
+            {item.title === "Total Expenses" || item.title === "Avg per Expense" ? `₹${item.value}` : item.value}
           </p>
         </div>
       ))}
