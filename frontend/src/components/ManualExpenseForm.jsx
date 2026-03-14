@@ -21,7 +21,7 @@ const ManualExpenseForm = ({ onExpenseAdded, setError, showToast }) => {
       setTitle('');
       setAmount('');
     } catch (err) {
-      setError('Failed to add expense. Please try again.');
+      setError(`Failed to add expense. Please try again.${err}`);
     }
   };
 

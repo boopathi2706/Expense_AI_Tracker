@@ -2,7 +2,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import axios from 'axios';
 
-const TransactionList = ({ expenses, setExpenses, setError, showToast }) => {
+const TransactionList = ({ expenses, setExpenses, showToast }) => {
   
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this expense?')) return;
@@ -14,7 +14,7 @@ const TransactionList = ({ expenses, setExpenses, setError, showToast }) => {
       setExpenses(expenses.filter(expense => expense._id !== id));
       showToast('Transaction deleted successfully!', 'success');
     } catch (err) {
-      showToast('Failed to delete expense.', 'error');
+      showToast(`Failed to delete expense.,${err}`);
     }
   };
 
@@ -22,7 +22,19 @@ const TransactionList = ({ expenses, setExpenses, setError, showToast }) => {
     const doc = new jsPDF();
     doc.text('Expense Report', 14, 15);
     const tableRows = expenses.map(e => [
-      new Date(e.date).toLocaleDateString(), e.title, e.category, `₹${e.amount.toFixed(2)}`
+      new Date(e.date).toLocaleDateString(),
+      e.title,
+      e.category,
+      `₹${e.amount.toFixed(2)}`,
+    ]);
+    autoTable(doc, {
+      head: [['Date', 'Title', 'Category', 'Amount']],
+      body: tableRows,
+      startY: 20,
+      theme: 'striped',
+    });
+    doc.save('expense_report.pdf');
+  };
 
   const exportCSV = () => {
     if (expenses.length === 0) return;
