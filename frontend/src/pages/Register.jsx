@@ -36,6 +36,7 @@ const Register = () => {
       return;
     }
 
+    showToast('Creating account...', 'loading');
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, formData);
       localStorage.setItem('token', response.data.token);
