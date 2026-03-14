@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply antialiased text-gray-200 bg-black;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-gray-900/80 backdrop-blur-xl border border-gray-800 shadow-lg;
+  }
+  
+  .glass-panel {
+    @apply bg-black/90 backdrop-blur-2xl border-r border-gray-800 shadow-[4px_0_24px_rgba(0,0,0,0.5)];
+  }
+
+  .glass-card {
+    @apply bg-gray-900/90 backdrop-blur-lg border border-gray-800 shadow-[0_4px_24px_0_rgba(0,0,0,0.4)] rounded-2xl hover:bg-gray-800/90 transition-all duration-300;
+  }
+  
+  .glass-input {
+    @apply bg-gray-800 border border-gray-700 text-gray-200 placeholder-gray-500 focus:bg-gray-800 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 outline-none;
+  }
+  
+  .glass-button {
+    @apply bg-purple-600 text-white shadow-lg shadow-purple-900/50 hover:bg-purple-500 hover:-translate-y-0.5 transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Scrollbar for Dark Theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
