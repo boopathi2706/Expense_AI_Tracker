@@ -102,7 +102,7 @@ const BudgetLimits = ({ expenses, showToast }) => {
             </select>
           </div>
           <div className="flex-1 w-full">
-            <label className="block text-sm font-semibold mb-1 text-gray-300">Monthly Limit ($)</label>
+            <label className="block text-sm font-semibold mb-1 text-gray-300">Monthly Limit (₹)</label>
             <input 
               type="number" 
               step="0.01"
@@ -180,8 +180,8 @@ const BudgetLimits = ({ expenses, showToast }) => {
                   <div className="flex justify-between items-end mb-3 mr-8">
                     <span className="font-bold text-gray-200">{b.category}</span>
                     <div className="text-right">
-                      <span className="text-xl font-black text-white">${spent.toFixed(2)}</span>
-                      <span className="text-sm font-medium text-gray-400"> / ${b.limit.toFixed(2)}</span>
+                      <span className="text-xl font-black text-white">₹{spent.toFixed(2)}</span>
+                      <span className="text-sm font-medium text-gray-400"> / ₹{b.limit.toFixed(2)}</span>
                     </div>
                   </div>
                   <div className="w-full bg-gray-800 rounded-full h-3 border border-gray-700">

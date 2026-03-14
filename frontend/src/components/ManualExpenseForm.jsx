@@ -38,7 +38,7 @@ const ManualExpenseForm = ({ onExpenseAdded, setError, showToast }) => {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold mb-1 text-gray-300">Amount ($)</label>
+          <label className="block text-sm font-semibold mb-1 text-gray-300">Amount (₹)</label>
           <input 
             type="number" step="0.01" required value={amount} onChange={(e) => setAmount(e.target.value)}
             className="w-full px-4 py-3 rounded-xl glass-input"

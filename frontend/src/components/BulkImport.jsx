@@ -64,7 +64,7 @@ const BulkImport = ({ onImportSuccess }) => {
           successCount++;
           // Show the AI-detected category in the log!
           const detectedCat = response.data.category || "Categorized";
-          setImportLog(prev => [...prev, `✔ [${detectedCat}] ${rawTitle} - $${cleanAmount}`]);
+          setImportLog(prev => [...prev, `✔ [${detectedCat}] ${rawTitle} - ₹${cleanAmount}`]);
         } catch (err) {
           const errorDetail = err.response?.data?.message || "Check format";
           setImportLog(prev => [...prev, `❌ Failed: ${rawTitle} (${errorDetail})`]);

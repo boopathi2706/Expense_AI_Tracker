@@ -27,7 +27,7 @@ const CategoryLimits = ({ onLimitUpdated }) => {
         </select>
         <input 
           type="number" 
-          placeholder="Limit $" 
+          placeholder="Limit ₹" 
           value={limit} 
           onChange={(e) => setLimit(e.target.value)} 
           className="border p-2 rounded w-24"
